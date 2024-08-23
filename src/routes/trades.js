@@ -1,5 +1,7 @@
 const express = require('express');
 const tradeController = require('../controllers/tradeController');
+const validate = require('../middlewares/validator');
+const { tradeSchema } = require('../validations/validations');
 
 const router = express.Router();
 
@@ -8,7 +10,7 @@ function errorHandler (req, res) {
 }
 
 // Create a new trade
-router.post('/', tradeController.createTrade);
+router.post('/', validate(tradeSchema), tradeController.createTrade);
 
 // Get all trades
 router.get('/', tradeController.getTrades);
