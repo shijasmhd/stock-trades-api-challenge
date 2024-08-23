@@ -9,9 +9,9 @@ const addNewUser = (mailId, password) => {
   });
 };
 
-const getUserDetails = (user_id) => {
-  return db.user.findUnique({
-    where: {user_id}
+const getUserDetails = (mail_id) => {
+  return db.user.findUniqueOrThrow({
+    where: {mail_id}
   });
 }
 
